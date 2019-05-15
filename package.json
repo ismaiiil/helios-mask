@@ -43,5 +43,15 @@
         "single"
       ]
     }
+  },
+  "dependencies": {
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "css-loader": "^2.1.1",
+    "vue": "^2.6.10",
+    "vue-loader": "^14.2.2",
+    "vue-template-compiler": "^2.6.10",
+    "webpack": "^4.31.0",
+    "webpack-stream": "^5.2.1"
   }
 }
