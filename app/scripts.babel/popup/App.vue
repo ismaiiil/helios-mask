@@ -44,7 +44,7 @@
         margin-top: 0;
     }
     #app {
-        width: 720px;
+        width: 480px;
         margin: auto;
     }
 </style>
