@@ -1,15 +1,15 @@
 <template>
-    <div id="login">
-        <h1>Login</h1>
+    <div id="localkey">
+        <h1>Load a Keystore file</h1>
         <div class="container">
-        <label for="uname"><b>Username</b></label>
-        <input type="text" name="uname" v-model="input.username" placeholder="Username" />
+        <label for="kstore"><b>KeyStore</b></label>
+        <input type="text" name="kstore" v-model="input.keystore" placeholder="KeyStore file" />
 
         <label for="psw"><b>Password</b></label>
         <input type="password" name="psw" v-model="input.password" placeholder="Password" />
 
-        <button type="button" v-on:click="login()">Login</button>
-        <router-link to="/local" replace>Use a Keystore File</router-link>
+        <button type="button" v-on:click="load()">Load In with Key</button>
+        <router-link to="/login" replace>Login instead</router-link>
         </div>
   </div>
 
@@ -17,27 +17,19 @@
 
 <script>
     export default {
-        name: 'Login',
+        name: 'Load',
         data() {
             return {
                 input: {
-                    username: "",
+                    keystore: "",
                     password: ""
                 }
             }
         },
         methods: {
-            login() {
-                if(this.input.username != "" && this.input.password != "") {
-                    if(this.input.username == this.$parent.mockAccount.username && this.input.password == this.$parent.mockAccount.password) {
-                        this.$emit("authenticated", true);
-                        this.$router.replace({ name: "secure" });
-                    } else {
-                        console.log("The username and / or password is incorrect");
-                    }
-                } else {
-                    console.log("A username and password must be present");
-                }
+            load() {
+                this.$emit("authenticated", true);
+                this.$router.replace({ name: "secure" });
             }
         }
     }
@@ -78,8 +70,6 @@ button:hover {
   text-align: center;
   margin: 24px 0 12px 0;
 }
-
-
 
 .container {
   width: 100%;

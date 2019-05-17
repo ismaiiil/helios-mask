@@ -23,12 +23,14 @@
             if(!this.authenticated) {
                 this.$router.replace({ name: "login" });
             }
+            //else we need to send router to secure area
         },
         methods: {
             setAuthenticated(status) {
                 this.authenticated = status;
             },
             logout() {
+                //TODO:delete local cache here
                 this.authenticated = false;
             }
         }
@@ -44,7 +46,17 @@
         margin-top: 0;
     }
     #app {
-        width: 480px;
+        width: 360px;
+        height: 720px;
         margin: auto;
+        margin-right: auto;
+    }
+    @media screen and (min-width: 720px) {
+        #app {
+        width: 720px;
+        height: 900px;
+        margin: auto;
+        margin-right: auto;
+        }
     }
 </style>
