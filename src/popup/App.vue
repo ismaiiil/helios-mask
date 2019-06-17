@@ -12,16 +12,15 @@
         name: 'App',
         data() {
             return {
-                authenticated: false,
-                mockAccount: {
-                    username: "test",
-                    password: "password"
-                }
+                authenticated: false
             }
         },
         mounted() {
+            this.getAuthenticated()
             if(!this.authenticated) {
                 this.$router.replace({ name: "login" });
+            }else{
+                this.$router.replace({ name: "secure" });
             }
             //else we need to send router to secure area
         },
@@ -29,9 +28,11 @@
             setAuthenticated(status) {
                 this.authenticated = status;
             },
+            getAuthenticated(){
+                this.authenticated = this.background.hasAccountsCached();
+            },
             logout() {
-                this.background.login("","TESTLOGOUT");
-                //TODO:delete local cache here
+                this.background.logout();
                 this.authenticated = false;
             }
         }

@@ -28,23 +28,17 @@
             }
         },
         methods: {
-            login() {
-                
+            login() {            
                 if(this.input.username != "" && this.input.password != "") {
-                    this.background.login(this.input.username ,this.input.password).then(resolve => {
-                      if(resolve == true){
+                    this.background.login(this.input.username ,this.input.password)
+                    .then(
+                      resolve => {
                         this.$emit("authenticated", true);
-                        this.$router.replace({ name: "secure" });
-                      }else{
-                        console.log("The username and / or password is incorrect");
-                      }
-                    });
-                    // if( this.background.login(this.input.username ,this.input.password)) {
-                    //     this.$emit("authenticated", true);
-                    //     this.$router.replace({ name: "secure" });
-                    // } else {
-                    //     console.log("The username and / or password is incorrect");
-                    // }
+                        this.$router.replace({ name: "secure" });                        
+                      },
+                      reject =>{
+                        console.log(reject);
+                      });
                 } else {
                     console.log("A username and password must be present");
                 }
